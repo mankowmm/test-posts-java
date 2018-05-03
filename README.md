@@ -9,7 +9,7 @@ Send new post message:
 
 POST: http://localhost:8080/sendPost
 
-RAW data (as JSON)
+RAW POST data (as JSON)
 {
 	"message": "Some Post message 1",
 	"author": "mankowmm"

@@ -1,9 +1,11 @@
 package com.mm.model;
 
+import javax.validation.constraints.NotNull;
 
 public class PostDto {
-	
+	@NotNull
 	private String message;
+	@NotNull
 	private String author;
 	
 	public PostDto() {

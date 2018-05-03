@@ -1,8 +1,12 @@
 package com.mm.model;
 
+import javax.validation.constraints.NotNull;
+
 public class FollowAuthorDto {
 
+	@NotNull
 	private String requestor;
+	@NotNull
 	private String authorToFollow;
 	
 	public FollowAuthorDto() {

@@ -2,6 +2,8 @@ package com.mm.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,7 +24,7 @@ public class PostsController {
 
 	@RequestMapping(value = "/getAuthorPosts", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<PostDto> getAuthorPosts(@RequestParam(name = "author", required = true) String author) {
-		List<PostDto> posts = postDaoService.getAuthorPost(author);
+		List<PostDto> posts = postDaoService.getAuthorPosts(author);
 		return posts;
 	}
 	
@@ -33,12 +35,12 @@ public class PostsController {
 	}
 
 	@RequestMapping(value = "/sendPost", method = RequestMethod.POST)
-	public void submitPost(@RequestBody PostDto post) {
+	public void submitPost(@Valid @RequestBody PostDto post) {
 		postDaoService.create(post);
 	}
 	
 	@RequestMapping(value = "/followAuthor", method = RequestMethod.POST)
-	public void submitPost(@RequestBody FollowAuthorDto folowAuthor) {
+	public void submitPost(@Valid @RequestBody FollowAuthorDto folowAuthor) {
 		postDaoService.followAuthor(folowAuthor.getRequestor(), folowAuthor.getAuthorToFollow());
 
 	}
